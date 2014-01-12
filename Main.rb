@@ -31,7 +31,6 @@ facilitate clients puts an animal up for adoption
 shelter = Shelter.new("Happyitails Shelter", 24)
 	
 def menu message
-	puts 'clear'
 	puts "HappiTails Animal Shelter"
 
  	 puts "#{message}\n\n" unless message.empty?
@@ -56,13 +55,9 @@ while choice != 'q'
   message = ""
   case choice
   when "1"
-    message += 'Animals Displayed'
-    Animal.display_animals.select do |x|
-    	puts x
-    end
+    message = shelter.get_animal_list
   when "2"
-    message += 'Clients Displayed'
-    puts "#{all_clients}"	
+    message = shelter.get_client_list
 =begin  Animals need
 	-name
 	-age
@@ -73,19 +68,13 @@ while choice != 'q'
   when "3"
     message += 'Animal Created'
     # temp = []
-    puts "What would you like to name your animal?"
-    name = gets.chomp.to_s
-    puts "What age is your animal?"
-    age = gets.chomp.to_s
-    puts "What gender is your animal?"
-    gender = gets.chomp.to_s
-    puts "What kind of species is your animal?"
-    species = gets.chomp.to_s
-    puts "List of toys?"
-    toys = gets.chomp.to_s
+    print "Name:" ; name = gets.chomp
+    print "Age:" ; age = gets.chomp
+    print "Gender:" ; gender = gets.chomp
+    print "Species:" ; species = gets.chomp
+ 	print "Toys:" ; toys = gets.chomp
     # temp = temp.push(animal_age, animal_gender, animal_species, animal_toys)
     shelter.animal_list << Animal.new(name, age, gender, species, toys)
-    puts "#{shelter.animal_list}"
     # animal = {
     # 	animal_name => temp
     # }
@@ -101,7 +90,6 @@ while choice != 'q'
     client_age = gets.chomp
     puts "Number of children"
     client_children = gets.chomp
-    puts "Number of pets"
     shelter.client_list << Client.new(client_name, client_age, client_children)
 
     # temp = temp.push(client_age)
