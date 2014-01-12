@@ -28,7 +28,7 @@ facilitate client adopts animal
 facilitate clients puts an animal up for adoption
 
 =end
-shelter = Shelter.new("Animal Names", "Client Names")
+shelter = Shelter.new("Happyitails Shelter", 24)
 	
 def menu message
 	puts 'clear'
