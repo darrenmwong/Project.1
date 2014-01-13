@@ -90,7 +90,7 @@ while choice != 'q'
     client_age = gets.chomp
     puts "Number of children"
     client_children = gets.chomp
-    shelter.client_list << Client.new(client_name, client_age, client_children)
+    shelter.client_list << Client.new(client_name, client_age, client_children, "")
 
     # temp = temp.push(client_age)
     # human = {
@@ -102,19 +102,68 @@ while choice != 'q'
    
   when "5"
     message += 'Adopted'
-    print "Select a pet:"
-    shelter.get_avaliable_animals.each do |animal|
-    	puts "#{animal.name}"
+    shelter.client_list.each do |client|
+  	puts client.name
+  end
+    print "Client:" ; get_client = gets.chomp
+    shelter.client_list.each do |client|
+    	if client.name == get_client
+    		client.addPet
+    	end
+    end
+
+    shelter.animal_list.each do |animal|
+    	if animal.adopted = nil && false
+    	print animal.name
+    	puts " "
+  	  end
+  	  	print animal.name
+  	  	puts " "
+	end
+	print "Select a pet:"
+	selected_animal = gets.chomp
+	shelter.animal_list.each do |animal|
+		if animal.name == selected_animal	
+			animal.pet_adopted
     	#all available animals
-    request_animal = gets.chomp
-    selected_animal = (shelter.animal_list.select { |animal| animal.name == requested_animal}).first
-    selected_animal.client = Client.new(cc_name, cc_age, cc_children, selected_animal)
-    message = "Client #{selected_animal.client.name} adopted #{selected_animal.name}"
+    end
+    
+    message = "Adopted #{selected_animal}"
     end
 
   
   when "6"
     message += 'option 6'
+    shelter.client_list.each do |client|
+    print "#{client.name} "
+    puts " "
+	end
+
+    print "Client:" ; get_client = gets.chomp
+    shelter.client_list.each do |client|
+  	  if client.name == get_client
+  	  	client.removePet
+  	  end
+  
+    shelter.animal_list.each do |animal|
+    if animal.adopted = true
+    end
+   	print animal.name
+    puts " "
+end
+  	print "Select a pet:"
+	selected_animal = gets.chomp
+	shelter.animal_list.each do |animal|
+		if animal.name == selected_animal	
+			animal.adopted_pet?
+		else
+			puts "Animal Was Not Yours" 
+	end
+	message = 'Adopted animal to shelter'
+end
+
+end
+
 
   else
       message += "I don't understand ..."

@@ -19,7 +19,7 @@ class Shelter
 end
 	def get_client_list
 		get_clients = @client_list.inject("") do |all_clients, client|
-			all_clients << "name: #{client.name}..."
+			all_clients << "#{client.name} "
 		end
 		get_clients
 	end
