@@ -24,4 +24,10 @@ end
 		get_clients
 	end
 
+	 def get_avaliable_animals
+   		 @animal_list.select do |animal|
+       		 client.available?
+    end
+  end
+
 end

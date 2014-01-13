@@ -55,9 +55,9 @@ while choice != 'q'
   message = ""
   case choice
   when "1"
-    message = shelter.get_animal_list
+    message += shelter.get_animal_list
   when "2"
-    message = shelter.get_client_list
+    message += shelter.get_client_list
 =begin  Animals need
 	-name
 	-age
@@ -102,6 +102,15 @@ while choice != 'q'
    
   when "5"
     message += 'Adopted'
+    print "Select a pet:"
+    shelter.get_avaliable_animals.each do |animal|
+    	puts "#{animal.name}"
+    	#all available animals
+    request_animal = gets.chomp
+    selected_animal = (shelter.animal_list.select { |animal| animal.name == requested_animal}).first
+    selected_animal.client = Client.new(cc_name, cc_age, cc_children, selected_animal)
+    message = "Client #{selected_animal.client.name} adopted #{selected_animal.name}"
+    end
 
   
   when "6"
